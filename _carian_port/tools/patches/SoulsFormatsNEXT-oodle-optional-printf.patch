@@ -1,0 +1,22 @@
+diff --git a/SoulsFormats/Utilities/Compression/Oodle/OodleCompressor.cs b/SoulsFormats/Utilities/Compression/Oodle/OodleCompressor.cs
+index 61be331..a066afd 100644
+--- a/SoulsFormats/Utilities/Compression/Oodle/OodleCompressor.cs
++++ b/SoulsFormats/Utilities/Compression/Oodle/OodleCompressor.cs
+@@ -52,13 +52,14 @@ namespace SoulsFormats
+         public static uint QueryVersion(IntPtr handle)
+         {
+             IntPtr checkVersion = InteropNativeLibrary.GetExport(handle, "Oodle_CheckVersion");
+-            IntPtr setPrintf = InteropNativeLibrary.GetExport(handle, "OodleCore_Plugins_SetPrintf");
++            // ER ships Oodle 2.6, where this optional logging export is absent.
++            bool hasPrintf = InteropNativeLibrary.TryGetExport(handle, "OodleCore_Plugins_SetPrintf", out IntPtr setPrintf);
+ 
+             // Oodle prints a warning here, so we disable the logging
+-            IntPtr printf = ((delegate* unmanaged<IntPtr, IntPtr>)setPrintf)(IntPtr.Zero);
++            IntPtr printf = hasPrintf ? ((delegate* unmanaged<IntPtr, IntPtr>)setPrintf)(IntPtr.Zero) : IntPtr.Zero;
+             uint libVersion = 0;
+             ((delegate* unmanaged<uint, uint*, int>)checkVersion)(0, &libVersion);
+-            ((delegate* unmanaged<IntPtr, IntPtr>)setPrintf)(printf);
++            if (hasPrintf) ((delegate* unmanaged<IntPtr, IntPtr>)setPrintf)(printf);
+ 
+             return libVersion;
+         }

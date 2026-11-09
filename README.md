@@ -4,6 +4,8 @@
 
 **下载：[Releases](https://github.com/fytk114514/pbz-weapon-mods-release/releases/latest)**
 
+源码：本仓库的 `_carian_port`、`_moonlight_port`，说明见 [README_源码.md](README_源码.md)。
+
 ## 卡利亚大剑 → 巨凶斧 3.6.2
 
 使用煞气兵器巨凶斧（默认左 Ctrl，按住蓄力）时，召唤出《艾尔登法环》战技"伟哉卡利亚"的辉石大剑。剑、特效和音效都来自法环原版：蓄力升段时剑按原版比例变大并闪光，召唤、升段、挥砍和落地都带原版特效和音效，最后一刀之后剑会消失。

@@ -1,0 +1,9 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "1.0",
+  "FriendlyName": "Carian Source Asset Builder",
+  "CanContainContent": false,
+  "Modules": [{"Name": "CBAAssetBuilder", "Type": "Editor", "LoadingPhase": "PostEngineInit"}],
+  "Plugins": [{"Name": "Niagara", "Enabled": true}]
+}

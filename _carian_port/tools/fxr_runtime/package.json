@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@cccode/fxr": "^32.1.3"
+  }
+}
